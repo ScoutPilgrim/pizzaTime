@@ -14,7 +14,6 @@ let idIter = 1;
 
 //Front-end logic
 $(document).ready(function(){
-  toppingMap.set(1, 'None'); //Setting the non dynamic Topping
   $('#pizzaForm').submit(function(event){
     event.preventDefault();
   });
@@ -24,14 +23,24 @@ $(document).ready(function(){
   });
   $('#pizzaForm').on('change', '.thisTopping', function(event){
     thisKey = parseInt($(this).attr('id'));
+    console.log(thisKey);
+    if($(this).val() === 'None'){
+      toppingMap.delete(thisKey);
+      console.log('User decided None for this topping, deleting key at '+thisKey);
+      console.log('Size of Map is now: ' +toppingMap.size);
+      console.log(toppingMap);
+      return;
+    }
+    toppingMap.set(thisKey, $(this).val());
+    console.log('Inserted ' +toppingMap.get(thisKey)+ ' into map at key: ' +thisKey+ '!');
   });
   $('#additionalTopping').click(function(){
     idIter++;
     $('form div.form-row:last').after($('form div.form-row:last').clone());
     $('form div.form-row:last').find('.removeTopping').show();
     $('form div.form-row:last').find('.thisTopping').attr('id', idIter.toString());
-    toppingMap.set(idIter, 'None');
-    console.log(toppingMap.size);
+    // toppingMap.set(idIter, 'None');
+    // console.log(toppingMap.size);
   });
   $('#pizzaForm').on('click', '.removeBut', function(event){
     var thisId = parseInt($(this).parent().prev().find('.thisTopping').attr('id'));
