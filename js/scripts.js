@@ -5,8 +5,34 @@ class Pizza{
     this.toppings = toppingMap;
     this.toppingsAmt = toppingMap.size;
   }
+  price = 0;
 }
 
+//Helper Functions
+function calculatePrice(pizzaClass){
+  console.log('Calculating Pizza Price...');
+  var basePrice = whichSize(pizzaClass.size);
+  console.log(basePrice);
+}
+function whichSize(sizeStr){
+  switch (sizeStr) {
+    case 'X-Small':
+      return 4.50;
+      break;
+    case 'Small':
+      return 6.00;
+      break;
+    case 'Medium':
+      return 7.00;
+      break;
+    case 'Large':
+      return 9.00;
+      break;
+    case 'X-Large':
+      return 13.50;
+      break;
+  }
+}
 //global variables
 let toppingMap = new Map();
 let thisSize = 'X-Small';
@@ -16,6 +42,9 @@ let idIter = 1;
 $(document).ready(function(){
   $('#pizzaForm').submit(function(event){
     event.preventDefault();
+    var myPizza = new Pizza(thisSize, toppingMap);
+    console.log(myPizza);
+    calculatePrice(myPizza);
   });
   $('#pizzaSize').change(function(){
     thisSize = $('#pizzaSize').val();
