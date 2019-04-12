@@ -5,5 +5,5 @@
   display: none;
 }
 .removeBut:hover{
-  cursor: hand;
+  cursor: pointer;
 }
