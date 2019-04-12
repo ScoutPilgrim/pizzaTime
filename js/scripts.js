@@ -13,6 +13,10 @@ function calculatePrice(pizzaClass){
   console.log('Calculating Pizza Price...');
   var basePrice = whichSize(pizzaClass.size);
   console.log(basePrice);
+  var toppingPrice = .75 * pizzaClass.toppingsAmt;
+  console.log(toppingPrice);
+  var finalPrice = basePrice + toppingPrice;
+  pizzaClass.price = finalPrice;
 }
 function whichSize(sizeStr){
   switch (sizeStr) {
@@ -45,6 +49,8 @@ $(document).ready(function(){
     var myPizza = new Pizza(thisSize, toppingMap);
     console.log(myPizza);
     calculatePrice(myPizza);
+    $('#pizzaPrice').find('p').text('You ordered a ' +myPizza.size+ ' pizza with ' +myPizza.toppingsAmt+ ' topping(s) for a total of: ' +myPizza.price+ '!');
+    $('#pizzaPrice').show();
   });
   $('#pizzaSize').change(function(){
     thisSize = $('#pizzaSize').val();

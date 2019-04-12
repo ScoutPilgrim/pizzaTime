@@ -7,3 +7,6 @@
 .removeBut:hover{
   cursor: pointer;
 }
+#pizzaPrice{
+  display: none;
+}
