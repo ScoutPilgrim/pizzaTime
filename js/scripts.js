@@ -1,15 +1,28 @@
 //Pizza class setup and prototypes
 class Pizza{
-  constructor(sizeStr, toppingArr){
+  constructor(sizeStr, toppingMap){
     this.size = sizeStr;
-    this.toppings = toppingArr;
-    this.toppingsAmt = toppingArr.length;
+    this.toppings = toppingMap;
+    this.toppingsAmt = toppingMap.length;
   }
 }
 
+//global variables
+let toppingMap = new Map();
+let thisSize = 'X-Small';
 
 //Front-end logic
 $(document).ready(function(){
+  $('#pizzaForm').submit(function(event){
+    event.preventDefault();
+  });
+  $('#pizzaSize').change(function(){
+    thisSize = $('#pizzaSize').val();
+    console.log('Size chnaged to ' +thisSize);
+  });
+  $('#pizzaForm').on('change', '.thisTopping', function(event){
+    
+  });
   $('#additionalTopping').click(function(){
     $('form div.form-row:last').after($('form div.form-row:last').clone());
     $('form div.form-row:last').find('.removeTopping').show();
