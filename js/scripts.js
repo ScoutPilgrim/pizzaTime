@@ -23,18 +23,18 @@ $(document).ready(function(){
     console.log('Size changed to ' +thisSize);
   });
   $('#pizzaForm').on('change', '.thisTopping', function(event){
-
+    thisKey = parseInt($(this).attr('id'));
   });
   $('#additionalTopping').click(function(){
     idIter++;
     $('form div.form-row:last').after($('form div.form-row:last').clone());
     $('form div.form-row:last').find('.removeTopping').show();
-    $('form div.form-row:last').attr('id', idIter.toString());
+    $('form div.form-row:last').find('.thisTopping').attr('id', idIter.toString());
     toppingMap.set(idIter, 'None');
     console.log(toppingMap.size);
   });
   $('#pizzaForm').on('click', '.removeBut', function(event){
-    var thisId = parseInt($(this).parent().parent().attr('id'));
+    var thisId = parseInt($(this).parent().prev().find('.thisTopping').attr('id'));
     console.log(thisId);
     console.log('Deleting topping at id: ' +thisId);
     toppingMap.delete(thisId);
