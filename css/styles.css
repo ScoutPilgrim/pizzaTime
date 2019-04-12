@@ -4,3 +4,6 @@
 .removeTopping{
   display: none;
 }
+.removeBut:hover{
+  cursor: hand;
+}
