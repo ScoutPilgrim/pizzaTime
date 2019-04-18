@@ -20,8 +20,18 @@ What it does:
 * Calculations are then done on the Pizza object, which returns the Price to the user.
 
 Included Specifications:
-* User has limited options to choose from.
-* user can add as many toppings as they want.
+* The user first has an option to select the size of pizza they wish to enjoy.
+* The size of pizza picked determines the base price of the user's pizza before the addition of toppings. The prices go like this:
+  1. X-Small - $4.50
+  2. Small - $6.00
+  3. Medium - $7.00
+  4. Large - $9.00
+  5. X-Large - $13.50
+* After the user selects their topping, they can they choose to add toppings if they wish. The topping prices go like this:
+  1. The user can expect a charge of $ 0.75 PER topping
+* After the has the desired size and toppings selected, the price of the pizza is determine based one the inputted size and amount of toppings
+  * An example, if the user chose a pizza of size Large ($9.00), and added three toppings ($0.75 ea), they could expect a returned price of $11.25 ($9.00 + (3 x $0.75)).
+* The returned price is then displayed to the user under the inputs.
 
 ##### Things to add
 1. Code is set up in such a way that an Order object could easily be implemented that would contain an array of submitted pizza objects and an Order Price total.
